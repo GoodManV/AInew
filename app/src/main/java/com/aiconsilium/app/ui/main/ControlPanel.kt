@@ -121,6 +121,7 @@ private fun ProviderConfigRow(
             onValueChange = onApiKeyChanged,
             modifier = Modifier.fillMaxWidth(),
             label = { Text("API-ключ") },
+            placeholder = { Text(config.provider.apiKeyHint) },
             visualTransformation = if (isKeyVisible) VisualTransformation.None else PasswordVisualTransformation(),
             trailingIcon = {
                 IconButton(onClick = { isKeyVisible = !isKeyVisible }) {
