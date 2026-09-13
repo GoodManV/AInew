@@ -34,7 +34,6 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.aiconsilium.app.data.model.AiProvider
 import com.aiconsilium.app.data.model.ProviderConfig
-import com.aiconsilium.app.data.model.ProviderConfig
 
 @Composable
 fun ControlPanel(
