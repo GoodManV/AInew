@@ -32,15 +32,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import com.aiconsilium.app.data.model.AiProvider
-import com.aiconsilium.app.data.model.ProviderConfig
+import com.aiconsilium.app.data.model.*
 
 @Composable
 fun ControlPanel(
     state: MainUiState,
     onProviderToggled: (AiProvider, Boolean) -> Unit,
     onApiKeyChanged: (AiProvider, String) -> Unit,
-    onModelChanged: (AiProvider, String) -> Unit,
+    onModelIdChanged: (AiProvider, String) -> Unit,
     onArbiterSelected: (AiProvider) -> Unit
 ) {
     LazyColumn(
@@ -65,7 +64,7 @@ fun ControlPanel(
                 config = config,
                 onToggled = { onProviderToggled(config.provider, it) },
                 onApiKeyChanged = { onApiKeyChanged(config.provider, it) },
-                onModelChanged = { onModelChanged(config.provider, it) }
+                onModelIdChanged = { onModelIdChanged(config.provider, it) }
             )
         }
 
@@ -96,7 +95,7 @@ private fun ProviderConfigRow(
     config: ProviderConfig,
     onToggled: (Boolean) -> Unit,
     onApiKeyChanged: (String) -> Unit,
-    onModelChanged: (String) -> Unit
+    onModelIdChanged: (String) -> Unit
 ) {
     var isKeyVisible by remember { mutableStateOf(false) }
 
@@ -135,7 +134,7 @@ private fun ProviderConfigRow(
 
         OutlinedTextField(
             value = config.modelId,
-            onValueChange = onModelChanged,
+            onValueChange = onModelIdChanged,
             modifier = Modifier.fillMaxWidth(),
             label = { Text("Модель") },
             placeholder = { Text(config.provider.defaultModel) },
