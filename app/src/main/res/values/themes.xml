@@ -1,0 +1,14 @@
+<resources>
+    <!--
+      Это только тема окна ОС (нужна декларативно для Activity в манифесте).
+      Всё реальное оформление UI — цвета, типографика, тёмная/светлая схема —
+      задаётся в Compose через AiConsiliumTheme (ui/theme/Theme.kt), а не здесь.
+      Мы намеренно не подключаем библиотеку com.google.android.material — она
+      нужна для View-based Material Components и не требуется в чисто
+      Compose-приложении.
+    -->
+    <style name="Theme.AiConsilium" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

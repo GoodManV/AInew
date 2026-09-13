@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Нужен для обращения к API всех LLM-провайдеров -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Приложение рассчитано на планшет, но не требует конкретного железа -->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <application
+        android:name=".AiConsiliumApp"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AiConsilium">
+        <!--
+          allowBackup="false": API-ключи хранятся зашифрованными ключом из
+          Android Keystore (см. data/local/KeystoreCipher.kt). Автоматический
+          бэкап/восстановление Android может перенести файл настроек на новое
+          устройство или после сброса, где этого ключа Keystore уже нет —
+          расшифровка станет невозможна. Проще явно исключить бэкап, чем
+          хранить ключи, которые нельзя будет прочитать после восстановления.
+        -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:resizeableActivity="true">
+            <!--
+              Ориентация намеренно не зафиксирована: MainScreen сам переключает
+              двухпанельный/компактный layout по ширине окна (см. ui/main/MainScreen.kt),
+              что соответствует актуальным рекомендациям Android по адаптивности
+              для больших экранов — принудительный screenOrientation для этого не нужен.
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

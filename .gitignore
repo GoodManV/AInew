@@ -1,0 +1,15 @@
+# Gradle / сборка
+.gradle/
+build/
+*.iml
+.cxx/
+
+# Локальный путь к Android SDK — у каждого свой, никогда не коммитится
+local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.hprof
+
+# ОС
+.DS_Store
